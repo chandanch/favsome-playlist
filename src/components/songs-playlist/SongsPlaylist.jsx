@@ -3,7 +3,16 @@ import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
 
 import styles from './SongsPlaylist.module.css';
-import { Grid } from '@mui/material';
+import {
+	Card,
+	CardActions,
+	CardContent,
+	Grid,
+	List,
+	ListItem,
+	ListItemButton,
+	ListItemText,
+} from '@mui/material';
 
 const SongsPlayList = () => {
 	return (
@@ -30,6 +39,46 @@ const SongsPlayList = () => {
 					</Button>
 				</Grid>
 			</Grid>
+			<br />
+			<Card>
+				<CardContent>
+					<List>
+						<ListItem disablePadding>
+							<ListItemButton>
+								<ListItemText
+									primary={
+										<Typography
+											variant='h6'
+											color='darkgreen'
+										>
+											A new Song!
+										</Typography>
+									}
+								/>
+							</ListItemButton>
+						</ListItem>
+						<ListItem disablePadding>
+							<ListItemButton>
+								<ListItemText
+									primary={
+										<Typography
+											variant='h6'
+											color='darkgreen'
+										>
+											A new rythm song!
+										</Typography>
+									}
+								/>
+							</ListItemButton>
+						</ListItem>
+					</List>
+				</CardContent>
+				<CardActions>
+					<Button size='small' color='secondary'>
+						Add New
+					</Button>
+				</CardActions>
+			</Card>
 		</div>
 	);
 };

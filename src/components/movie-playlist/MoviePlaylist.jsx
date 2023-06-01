@@ -41,7 +41,7 @@ const MoviePlayList = () => {
 					<ListItemButton>
 						<ListItemText
 							primary={
-								<Typography variant='h6' color='primary'>
+								<Typography variant='h6' color='brown'>
 									A new Movie!
 								</Typography>
 							}
