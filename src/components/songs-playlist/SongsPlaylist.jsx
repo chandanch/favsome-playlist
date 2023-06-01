@@ -1,6 +1,7 @@
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
+import AudioFileIcon from '@mui/icons-material/AudioFile';
 
 import styles from './SongsPlaylist.module.css';
 import {
@@ -11,6 +12,7 @@ import {
 	List,
 	ListItem,
 	ListItemButton,
+	ListItemIcon,
 	ListItemText,
 } from '@mui/material';
 import { getRandomSongName } from '../../services/fakerService';
@@ -46,6 +48,9 @@ const SongsPlayList = () => {
 					<List>
 						<ListItem disablePadding>
 							<ListItemButton>
+								<ListItemIcon>
+									<AudioFileIcon />
+								</ListItemIcon>
 								<ListItemText
 									primary={
 										<Typography
@@ -60,6 +65,9 @@ const SongsPlayList = () => {
 						</ListItem>
 						<ListItem disablePadding>
 							<ListItemButton>
+								<ListItemIcon>
+									<AudioFileIcon />
+								</ListItemIcon>
 								<ListItemText
 									primary={
 										<Typography

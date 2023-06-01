@@ -1,10 +1,9 @@
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
-import {
-	getRandomMovieName,
-	getRandomSongName,
-} from '../../services/fakerService';
+import MovieFilterIcon from '@mui/icons-material/MovieFilter';
+
+import { getRandomMovieName } from '../../services/fakerService';
 
 import styles from './MoviePlaylist.module.css';
 import {
@@ -12,6 +11,7 @@ import {
 	List,
 	ListItem,
 	ListItemButton,
+	ListItemIcon,
 	ListItemText,
 } from '@mui/material';
 
@@ -43,6 +43,9 @@ const MoviePlayList = () => {
 			<List>
 				<ListItem disablePadding>
 					<ListItemButton>
+						<ListItemIcon>
+							<MovieFilterIcon />
+						</ListItemIcon>
 						<ListItemText
 							primary={
 								<Typography variant='h6' color='brown'>
@@ -54,6 +57,9 @@ const MoviePlayList = () => {
 				</ListItem>
 				<ListItem disablePadding>
 					<ListItemButton>
+						<ListItemIcon>
+							<MovieFilterIcon />
+						</ListItemIcon>
 						<ListItemText
 							primary={
 								<Typography variant='h6' color='brown'>
