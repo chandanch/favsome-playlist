@@ -43,7 +43,7 @@ const SongsPlayList = () => {
 				</Grid>
 			</Grid>
 			<br />
-			<Card>
+			<Card className={styles.cardContainer}>
 				<CardContent>
 					<List>
 						<ListItem disablePadding>
