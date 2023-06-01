@@ -1,14 +1,22 @@
-import { Typography } from '@mui/material';
-import MoviePlayList from './components/MoviePlaylist';
+import { Typography, AppBar, Toolbar } from '@mui/material';
+import MoviePlayList from './components/movie-playlist/MoviePlaylist';
+
+import './App.css';
+import SongsPlayList from './components/songs-playlist/SongsPlaylist';
 
 const App = () => {
 	return (
 		<div>
-			<Typography variant='h4' color='peru'>
-				FavSome Playlists!
-			</Typography>
-			<hr />
-			<MoviePlayList />
+			<AppBar position='fixed' color='primary'>
+				<Toolbar>
+					<Typography variant='h6'>FavSome Playlists!</Typography>
+				</Toolbar>
+			</AppBar>
+			<section className='playlist-container'>
+				<MoviePlayList />
+				<hr />
+				<SongsPlayList />
+			</section>
 		</div>
 	);
 };
