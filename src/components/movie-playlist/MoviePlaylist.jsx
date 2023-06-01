@@ -3,24 +3,17 @@ import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
 
 import styles from './MoviePlaylist.module.css';
-import { Grid } from '@mui/material';
+import {
+	Grid,
+	List,
+	ListItem,
+	ListItemButton,
+	ListItemText,
+} from '@mui/material';
 
 const MoviePlayList = () => {
 	return (
 		<div className='container'>
-			{/* <div className={styles.moviePlayListContainer}>
-				<Typography variant='h4' color='primary'>
-					Movie PlayList
-				</Typography>
-				<Button
-					className={styles.addBtn}
-					variant='contained'
-					color='primary'
-					startIcon={<AddIcon />}
-				>
-					Add To PlayList
-				</Button>
-			</div> */}
 			<Grid
 				container
 				alignItems='center'
@@ -43,6 +36,30 @@ const MoviePlayList = () => {
 					</Button>
 				</Grid>
 			</Grid>
+			<List>
+				<ListItem disablePadding>
+					<ListItemButton>
+						<ListItemText
+							primary={
+								<Typography variant='h6' color='primary'>
+									A new Movie!
+								</Typography>
+							}
+						/>
+					</ListItemButton>
+				</ListItem>
+				<ListItem disablePadding>
+					<ListItemButton>
+						<ListItemText
+							primary={
+								<Typography variant='h6' color='brown'>
+									A new Movie2!
+								</Typography>
+							}
+						/>
+					</ListItemButton>
+				</ListItem>
+			</List>
 		</div>
 	);
 };
