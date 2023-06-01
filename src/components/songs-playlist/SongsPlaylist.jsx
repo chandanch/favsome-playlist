@@ -13,6 +13,7 @@ import {
 	ListItemButton,
 	ListItemText,
 } from '@mui/material';
+import { getRandomSongName } from '../../services/fakerService';
 
 const SongsPlayList = () => {
 	return (
@@ -51,7 +52,7 @@ const SongsPlayList = () => {
 											variant='h6'
 											color='darkgreen'
 										>
-											A new Song!
+											{getRandomSongName()}
 										</Typography>
 									}
 								/>
@@ -65,7 +66,7 @@ const SongsPlayList = () => {
 											variant='h6'
 											color='darkgreen'
 										>
-											A new rythm song!
+											{getRandomSongName()}
 										</Typography>
 									}
 								/>

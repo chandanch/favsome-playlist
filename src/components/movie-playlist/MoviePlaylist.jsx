@@ -1,6 +1,10 @@
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
+import {
+	getRandomMovieName,
+	getRandomSongName,
+} from '../../services/fakerService';
 
 import styles from './MoviePlaylist.module.css';
 import {
@@ -42,7 +46,7 @@ const MoviePlayList = () => {
 						<ListItemText
 							primary={
 								<Typography variant='h6' color='brown'>
-									A new Movie!
+									{getRandomMovieName()}
 								</Typography>
 							}
 						/>
@@ -53,7 +57,7 @@ const MoviePlayList = () => {
 						<ListItemText
 							primary={
 								<Typography variant='h6' color='brown'>
-									A new Movie2!
+									{getRandomMovieName()}
 								</Typography>
 							}
 						/>
