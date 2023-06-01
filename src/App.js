@@ -3,8 +3,10 @@ import MoviePlayList from './components/movie-playlist/MoviePlaylist';
 
 import './App.css';
 import SongsPlayList from './components/songs-playlist/SongsPlaylist';
+import { store } from './store';
 
 const App = () => {
+	console.log(store);
 	return (
 		<div>
 			<AppBar position='fixed' color='primary'>
