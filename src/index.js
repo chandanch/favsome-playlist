@@ -7,7 +7,6 @@ import App from './App';
 const theme = createTheme({
 	typography: {
 		fontFamily: [
-			'-apple-system',
 			'"Segoe UI"',
 			'"Segoe UI Emoji"',
 			'"Segoe UI Symbol"',
