@@ -10,10 +10,10 @@ const App = () => {
 	console.log(store.getState());
 	// dispatch action
 	store.dispatch({
-		type: 'songs/addSong',
+		type: 'songs/addSong', // format: sliceName/reducerfuncName
 		payload: 'NEEW Song',
 	});
-	// verfify state now
+	// verify the updated state
 	console.log(JSON.stringify(store.getState()));
 
 	return (
