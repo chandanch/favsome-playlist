@@ -14,6 +14,10 @@ const theme = createTheme({
 		].join(','),
 		fontSize: 12,
 	},
+	palette: {
+		primary: '#117d9c',
+		secondary: '#009a71',
+	},
 });
 
 const root = createRoot(document.getElementById('root'));
