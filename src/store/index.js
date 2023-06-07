@@ -15,6 +15,7 @@ const songsSlice = createSlice({
 
 const store = configureStore({
 	reducer: {
+		// key maps to the state object property
 		songs: songsSlice.reducer,
 	},
 });
