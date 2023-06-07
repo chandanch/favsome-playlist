@@ -3,6 +3,8 @@ import { configureStore, createSlice } from '@reduxjs/toolkit';
 const songsSlice = createSlice({
 	name: 'songs',
 	initialState: [],
+	// note: Reducers can manage only its own state (songs in this case)
+	// as configured in the configureStore() it does not have access to the entire state
 	reducers: {
 		addSong(state, action) {
 			state.push(action.payload);
