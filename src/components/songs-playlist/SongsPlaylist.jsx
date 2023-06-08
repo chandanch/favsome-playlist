@@ -15,9 +15,18 @@ import {
 	ListItemIcon,
 	ListItemText,
 } from '@mui/material';
+import { useDispatch } from 'react-redux';
+
 import { getRandomSongName } from '../../services/fakerService';
+import { addSong } from '../../store';
 
 const SongsPlayList = () => {
+	const dispatch = useDispatch();
+
+	const addSongToList = () => {
+		dispatch(addSong(getRandomSongName()));
+	};
+
 	return (
 		<div className='container'>
 			<Grid
@@ -37,6 +46,7 @@ const SongsPlayList = () => {
 						variant='contained'
 						color='secondary'
 						startIcon={<AddIcon />}
+						onClick={addSongToList}
 					>
 						Add To PlayList
 					</Button>

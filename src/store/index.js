@@ -22,4 +22,6 @@ const store = configureStore({
 	},
 });
 
-export { store };
+const { addSong, removeSong } = songsSlice.actions;
+
+export { store, addSong, removeSong };
