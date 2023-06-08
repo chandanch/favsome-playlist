@@ -2,6 +2,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
 import AudioFileIcon from '@mui/icons-material/AudioFile';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 import styles from './SongsPlaylist.module.css';
 import {
@@ -9,6 +10,7 @@ import {
 	CardActions,
 	CardContent,
 	Grid,
+	IconButton,
 	List,
 	ListItem,
 	ListItemButton,
@@ -18,7 +20,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getRandomSongName } from '../../services/fakerService';
-import { addSong } from '../../store';
+import { addSong, removeSong } from '../../store';
 
 const SongsPlayList = () => {
 	// useDispatch: to access dispatch function
@@ -37,10 +39,26 @@ const SongsPlayList = () => {
 		dispatch(addSong(getRandomSongName()));
 	};
 
+	const removeSongFromList = (song) => {
+		dispatch(removeSong(song));
+	};
+
 	const displaySongList = () => {
 		const songsList = songs.map((song) => {
 			return (
-				<ListItem disablePadding key={Math.random()}>
+				<ListItem
+					disablePadding
+					key={Math.random()}
+					secondaryAction={
+						<IconButton
+							edge='end'
+							color='danger'
+							onClick={() => removeSongFromList(song)}
+						>
+							<DeleteIcon />
+						</IconButton>
+					}
+				>
 					<ListItemButton>
 						<ListItemIcon>
 							<AudioFileIcon />

@@ -10,7 +10,8 @@ const songsSlice = createSlice({
 			state.push(action.payload);
 		},
 		removeSong(state, action) {
-			state.pop(action.payload);
+			const songIndex = state.indexOf(action.payload);
+			state.splice(songIndex, 1);
 		},
 	},
 });

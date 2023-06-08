@@ -22,6 +22,9 @@ const theme = createTheme({
 		secondary: {
 			main: '#009a71',
 		},
+		danger: {
+			main: '#c62828',
+		},
 	},
 });
 
