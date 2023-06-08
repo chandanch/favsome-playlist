@@ -16,8 +16,12 @@ const theme = createTheme({
 		fontSize: 12,
 	},
 	palette: {
-		primary: '#117d9c',
-		secondary: '#009a71',
+		primary: {
+			main: '#117d9c',
+		},
+		secondary: {
+			main: '#009a71',
+		},
 	},
 });
 
