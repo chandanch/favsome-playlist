@@ -24,6 +24,8 @@ const SongsPlayList = () => {
 	// useDispatch: to access dispatch function
 	const dispatch = useDispatch();
 
+	// used to access redux store state
+	// pass a function to useSelector that can return the needed state(s) from redux store
 	const songs = useSelector((state) => {
 		return state.songs;
 	});
