@@ -3,6 +3,8 @@ import { createRoot } from 'react-dom/client';
 import { ThemeProvider, createTheme } from '@mui/material';
 
 import App from './App';
+import { store } from './store';
+import { Provider } from 'react-redux';
 
 const theme = createTheme({
 	typography: {
@@ -21,7 +23,10 @@ const theme = createTheme({
 
 const root = createRoot(document.getElementById('root'));
 root.render(
-	<ThemeProvider theme={theme}>
-		<App />
-	</ThemeProvider>
+	// Binds the redux store to react app, makes the store available to any nested components
+	<Provider store={store}>
+		<ThemeProvider theme={theme}>
+			<App />
+		</ThemeProvider>
+	</Provider>
 );
