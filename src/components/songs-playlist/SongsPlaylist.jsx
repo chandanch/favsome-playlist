@@ -15,16 +15,47 @@ import {
 	ListItemIcon,
 	ListItemText,
 } from '@mui/material';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { getRandomSongName } from '../../services/fakerService';
 import { addSong } from '../../store';
 
 const SongsPlayList = () => {
+	// useDispatch: to access dispatch function
 	const dispatch = useDispatch();
 
+	const songs = useSelector((state) => {
+		return state.songs;
+	});
+
 	const addSongToList = () => {
+		// 1. call the action creation function with payload which returns the action obj
+		// 2. invoke the dispatch function with the action object
+		// 3. specific reducer then handles the action
 		dispatch(addSong(getRandomSongName()));
+	};
+
+	const displaySongList = () => {
+		const songsList = songs.map((song) => {
+			return (
+				<ListItem disablePadding key={Math.random()}>
+					<ListItemButton>
+						<ListItemIcon>
+							<AudioFileIcon />
+						</ListItemIcon>
+						<ListItemText
+							primary={
+								<Typography variant='h6' color='darkgreen'>
+									{song}
+								</Typography>
+							}
+						/>
+					</ListItemButton>
+				</ListItem>
+			);
+		});
+
+		return songsList;
 	};
 
 	return (
@@ -55,42 +86,7 @@ const SongsPlayList = () => {
 			<br />
 			<Card className={styles.cardContainer}>
 				<CardContent>
-					<List>
-						<ListItem disablePadding>
-							<ListItemButton>
-								<ListItemIcon>
-									<AudioFileIcon />
-								</ListItemIcon>
-								<ListItemText
-									primary={
-										<Typography
-											variant='h6'
-											color='darkgreen'
-										>
-											{getRandomSongName()}
-										</Typography>
-									}
-								/>
-							</ListItemButton>
-						</ListItem>
-						<ListItem disablePadding>
-							<ListItemButton>
-								<ListItemIcon>
-									<AudioFileIcon />
-								</ListItemIcon>
-								<ListItemText
-									primary={
-										<Typography
-											variant='h6'
-											color='darkgreen'
-										>
-											{getRandomSongName()}
-										</Typography>
-									}
-								/>
-							</ListItemButton>
-						</ListItem>
-					</List>
+					<List>{displaySongList()}</List>
 				</CardContent>
 				<CardActions>
 					<Button size='small' color='secondary'>
