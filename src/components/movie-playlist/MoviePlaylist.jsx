@@ -26,6 +26,10 @@ const MoviePlayList = () => {
 		return state.movies;
 	});
 
+	const removeMovieFromList = (movie) => {
+		dispatch(removeMovie(movie));
+	};
+
 	const displayMovieList = () => {
 		const movieListItems = movies.map((movie) => {
 			return (
@@ -33,7 +37,11 @@ const MoviePlayList = () => {
 					disablePadding
 					key={Math.random()}
 					secondaryAction={
-						<IconButton edge='end' color='danger'>
+						<IconButton
+							edge='end'
+							color='danger'
+							onClick={() => removeMovieFromList(movie)}
+						>
 							<DeleteIcon />
 						</IconButton>
 					}
