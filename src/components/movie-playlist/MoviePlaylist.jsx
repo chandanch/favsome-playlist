@@ -1,11 +1,8 @@
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
+import DeleteIcon from '@mui/icons-material/Delete';
 import MovieFilterIcon from '@mui/icons-material/MovieFilter';
-
-import { getRandomMovieName } from '../../services/fakerService';
-
-import styles from './MoviePlaylist.module.css';
 import {
 	Grid,
 	List,
@@ -13,9 +10,58 @@ import {
 	ListItemButton,
 	ListItemIcon,
 	ListItemText,
+	IconButton,
 } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+
+import styles from './MoviePlaylist.module.css';
+
+import { getRandomMovieName } from '../../services/fakerService';
+import { addMovie, removeMovie } from '../../store';
 
 const MoviePlayList = () => {
+	const dispatch = useDispatch();
+
+	const movies = useSelector((state) => {
+		return state.movies;
+	});
+
+	const displayMovieList = () => {
+		const movieListItems = movies.map((movie) => {
+			return (
+				<ListItem
+					disablePadding
+					key={Math.random()}
+					secondaryAction={
+						<IconButton edge='end' color='danger'>
+							<DeleteIcon />
+						</IconButton>
+					}
+				>
+					<ListItemButton>
+						<ListItemIcon>
+							<MovieFilterIcon />
+						</ListItemIcon>
+						<ListItemText
+							primary={
+								<Typography variant='h6' color='brown'>
+									{movie}
+								</Typography>
+							}
+						/>
+					</ListItemButton>
+				</ListItem>
+			);
+		});
+
+		return movieListItems;
+	};
+
+	const addMovieToList = () => {
+		const movieName = getRandomMovieName();
+		dispatch(addMovie(movieName));
+	};
+
 	return (
 		<div className='container'>
 			<Grid
@@ -35,41 +81,13 @@ const MoviePlayList = () => {
 						variant='contained'
 						color='primary'
 						startIcon={<AddIcon />}
+						onClick={addMovieToList}
 					>
 						Add To PlayList
 					</Button>
 				</Grid>
 			</Grid>
-			<List>
-				<ListItem disablePadding>
-					<ListItemButton>
-						<ListItemIcon>
-							<MovieFilterIcon />
-						</ListItemIcon>
-						<ListItemText
-							primary={
-								<Typography variant='h6' color='brown'>
-									{getRandomMovieName()}
-								</Typography>
-							}
-						/>
-					</ListItemButton>
-				</ListItem>
-				<ListItem disablePadding>
-					<ListItemButton>
-						<ListItemIcon>
-							<MovieFilterIcon />
-						</ListItemIcon>
-						<ListItemText
-							primary={
-								<Typography variant='h6' color='brown'>
-									{getRandomMovieName()}
-								</Typography>
-							}
-						/>
-					</ListItemButton>
-				</ListItem>
-			</List>
+			<List>{displayMovieList()}</List>
 		</div>
 	);
 };
