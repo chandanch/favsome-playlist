@@ -25,6 +25,9 @@ const theme = createTheme({
 		danger: {
 			main: '#c62828',
 		},
+		settermap: {
+			main: '#960631',
+		},
 	},
 });
 

@@ -16,6 +16,7 @@ const songsSlice = createSlice({
 		reset(state, action) {
 			// we can explictly return something using the return statement
 			// redux takes the return value and add it to that specific state.
+			// this signals imer that the state is being mutated
 			// in this case it sets the songs state to empty array
 			return [];
 		},

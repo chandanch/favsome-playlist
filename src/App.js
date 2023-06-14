@@ -1,4 +1,4 @@
-import { Typography, AppBar, Toolbar } from '@mui/material';
+import { Typography, AppBar, Toolbar, Button, Box } from '@mui/material';
 import MoviePlayList from './components/movie-playlist/MoviePlaylist';
 
 import './App.css';
@@ -17,11 +17,18 @@ const App = () => {
 
 	return (
 		<div>
-			<AppBar position='fixed' color='primary'>
-				<Toolbar>
-					<Typography variant='h6'>FavSome Playlists!</Typography>
-				</Toolbar>
-			</AppBar>
+			<Box sx={{ flexGrow: 1 }}>
+				<AppBar position='fixed' color='primary'>
+					<Toolbar>
+						<Typography variant='h6' sx={{ flexGrow: 1 }}>
+							FavSome Playlists!
+						</Typography>
+						<Button variant='contained' color='settermap'>
+							Reset Playlists
+						</Button>
+					</Toolbar>
+				</AppBar>
+			</Box>
 			<section className='playlist-container'>
 				<MoviePlayList />
 				<hr />
