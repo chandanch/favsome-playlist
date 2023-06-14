@@ -13,6 +13,12 @@ const songsSlice = createSlice({
 			const songIndex = state.indexOf(action.payload);
 			state.splice(songIndex, 1);
 		},
+		reset(state, action) {
+			// we can explictly return something using the return statement
+			// redux takes the return value and add it to that specific state.
+			// in this case it sets the songs state to empty array
+			return [];
+		},
 	},
 });
 
