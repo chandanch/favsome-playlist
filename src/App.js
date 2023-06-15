@@ -3,6 +3,8 @@ import MoviePlayList from './components/movie-playlist/MoviePlaylist';
 
 import './App.css';
 import SongsPlayList from './components/songs-playlist/SongsPlaylist';
+import { reset } from './store';
+import { useDispatch } from 'react-redux';
 
 const App = () => {
 	// // get initial state
@@ -15,6 +17,8 @@ const App = () => {
 	// // verify the updated state
 	// console.log(JSON.stringify(store.getState()));
 
+	const dispatch = useDispatch();
+
 	return (
 		<div>
 			<Box sx={{ flexGrow: 1 }}>
@@ -23,7 +27,11 @@ const App = () => {
 						<Typography variant='h6' sx={{ flexGrow: 1 }}>
 							FavSome Playlists!
 						</Typography>
-						<Button variant='contained' color='settermap'>
+						<Button
+							variant='contained'
+							color='settermap'
+							onClick={() => dispatch(reset())}
+						>
 							Reset Playlists
 						</Button>
 					</Toolbar>
