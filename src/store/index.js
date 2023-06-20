@@ -1,4 +1,6 @@
-import { configureStore, createSlice } from '@reduxjs/toolkit';
+import { configureStore, createAction, createSlice } from '@reduxjs/toolkit';
+
+const reset = createAction('app/reset');
 
 const songsSlice = createSlice({
 	name: 'songs',
@@ -13,13 +15,15 @@ const songsSlice = createSlice({
 			const songIndex = state.indexOf(action.payload);
 			state.splice(songIndex, 1);
 		},
-		reset(state, action) {
+	},
+	extraReducers: (builder) => {
+		builder.addCase(reset, (state, action) => {
 			// we can explictly return something using the return statement
 			// redux takes the return value and add it to that specific state.
 			// this signals imer that the state is being mutated
 			// in this case it sets the songs state to empty array
 			return [];
-		},
+		});
 	},
 });
 
@@ -36,7 +40,7 @@ const moviesSlice = createSlice({
 		},
 	},
 	extraReducers: (builder) => {
-		builder.addCase(songsSlice.actions.reset, (state, action) => {
+		builder.addCase(reset, (state, action) => {
 			return [];
 		});
 	},
@@ -50,7 +54,7 @@ const store = configureStore({
 	},
 });
 
-const { addSong, removeSong, reset } = songsSlice.actions;
+const { addSong, removeSong } = songsSlice.actions;
 
 const { addMovie, removeMovie } = moviesSlice.actions;
 
