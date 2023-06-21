@@ -1,61 +1,15 @@
-import { configureStore, createAction, createSlice } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 
-const reset = createAction('app/reset');
-
-const songsSlice = createSlice({
-	name: 'songs',
-	initialState: [],
-	// note: Reducers can manage only its own state (songs in this case)
-	// as configured in the configureStore() it does not have access to the entire state
-	reducers: {
-		addSong(state, action) {
-			state.push(action.payload);
-		},
-		removeSong(state, action) {
-			const songIndex = state.indexOf(action.payload);
-			state.splice(songIndex, 1);
-		},
-	},
-	extraReducers: (builder) => {
-		builder.addCase(reset, (state, action) => {
-			// we can explictly return something using the return statement
-			// redux takes the return value and add it to that specific state.
-			// this signals imer that the state is being mutated
-			// in this case it sets the songs state to empty array
-			return [];
-		});
-	},
-});
-
-const moviesSlice = createSlice({
-	name: 'movies',
-	initialState: [],
-	reducers: {
-		addMovie(state, action) {
-			state.push(action.payload);
-		},
-		removeMovie(state, action) {
-			const movieIndex = state.indexOf(action.payload);
-			state.splice(movieIndex, 1);
-		},
-	},
-	extraReducers: (builder) => {
-		builder.addCase(reset, (state, action) => {
-			return [];
-		});
-	},
-});
+import { reset } from './actions/reset';
+import { addMovie, removeMovie, moviesReducer } from './slices/moviesSlice';
+import { addSong, removeSong, songsReducer } from './slices/songsSlice';
 
 const store = configureStore({
 	reducer: {
 		// key maps to the state object property
-		songs: songsSlice.reducer,
-		movies: moviesSlice.reducer,
+		songs: songsReducer,
+		movies: moviesReducer,
 	},
 });
-
-const { addSong, removeSong } = songsSlice.actions;
-
-const { addMovie, removeMovie } = moviesSlice.actions;
 
 export { store, addSong, removeSong, addMovie, removeMovie, reset };
